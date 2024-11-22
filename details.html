@@ -1,0 +1,39 @@
+{%extends 'base.html'%}
+
+{%block title%}Essences{%endblock%}
+
+{%block content%}
+
+
+<div class="row">
+    <div class="col">
+      <img src="{{ url_for('static', filename=perfume[2])}}" class="card-img-top" >
+        </div>
+    <div class="col">
+        <h5 class="card-title">{{perfume[3]}}</h5>
+        <p class="fs-6 bs-secondary-color-rgb">{{perfume[1]}}</p>
+        <p class="card-text">{{perfume[4]}}</p>
+        {%for ingradient in ingradients%}
+        <a class="btn btn-success" href="{{url_for('ingradients',ingradient=ingradient)}}">{{ingradient}}</a>
+        {%endfor%}<br><br>
+         <p class="text-center">Об'єм:</p>
+       <div class="btn-group" role="group" aria-label="Basic outlined example">
+  <button type="button"   onclick="window.location.href='{{ url_for('details_2', id=perfume[0], ml='50') }}'" class="btn btn-outline-secondary">50ml</button>
+  <button type="button" onclick="window.location.href='{{ url_for('details_2', id=perfume[0], ml='100') }}'" class="btn btn-outline-secondary">100ml</button>
+  <button type="button" onclick="window.location.href='{{ url_for('details_2', id=perfume[0], ml='200') }}'" class="btn btn-outline-secondary">200ml</button>
+</div><br><br>
+        {%if not price%}
+    <a class="btn btn-primary">{{perfume[6]}}₴</a><br><br>
+        {%elif price%}
+    <a class="btn btn-primary">{{price}}₴</a><br><br>
+        {%endif%}
+
+    <div class="row">
+      <div class="col text-start">
+    <a  onclick="window.location.href='{{ url_for('add_basket_details', id=perfume[0], price=price) }}'" class="btn btn-primary ">Basket</a>
+        </div>
+      </div>
+       </div>
+      </div>
+
+{%endblock%}

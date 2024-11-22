@@ -1,0 +1,85 @@
+{%extends 'base.html'%}
+
+{%block title%}Products{%endblock%}
+
+{%block content%}
+
+<h1 class="text-center">Products</h1><br>
+
+
+
+
+
+ <div class="row">
+      <div class="col text-start">
+<p class="d-inline-flex gap-1">
+  <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Фільтри</a>
+</p>
+<div class="row">
+  <div class="col">
+    <div class="collapse multi-collapse" id="multiCollapseExample1">
+        <p>Ціна</p>
+<form method="post" action="/filtir/">
+<label for="customRange1" class="form-label">Від:</label>
+<input type="range" name="min" class="form-range" min="950" max="1600" id="customRange1" oninput="updateRangeValue(this.value, 'rangeValue1')">
+<div id="rangeValue1" style="text-align: center; margin-top: 5px;">0</div>
+
+<label for="customRange2" class="form-label">До:</label>
+<input type="range" class="form-range" name="max" min="950" max="1600" id="customRange2" oninput="updateRangeValue(this.value, 'rangeValue2')">
+<div id="rangeValue2" style="text-align: center; margin-top: 5px;">0</div>
+
+<script>
+  function updateRangeValue(value, elementId) {
+    document.getElementById(elementId).textContent = value;
+  }
+</script>
+
+        <br><br>
+       <button type="submit" class="btn btn-primary">Шукати</button>
+    </form>
+    </div>
+  </div>
+</div>
+</div>
+      </div>
+
+      <div class="col text-end">
+<div class="btn-group">
+  <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+    Сортування
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="{{url_for('price_2')}}">Від найбільшої ціни</a></li>
+    <li><a class="dropdown-item" href="{{url_for('price_1')}}">Від найменшої ціни</a></li>
+  </ul>
+</div>
+      </div><br>
+<div class="row row-cols-5 row-cols-md-5 g-5">
+   {% for perfume in perfumes %}
+  <div class="col">
+    <div class="card">
+      <img src="{{ url_for('static', filename=perfume[2]) }}" class="card-img-top" >
+      <div class="card-body">
+        <h5 class="card-title">{{perfume[3]}}</h5>
+        <p class="fs-6 bs-secondary-color-rgb">{{perfume[1]}}</p>
+        <p class="card-text">{{perfume[4]}}</p>
+<!--        <p>Об'єм:</p>-->
+<!--      <button type="button" class="btn active" data-bs-toggle="button" aria-pressed="true">50ml</button>-->
+<!--      <button type="button" class="btn active" data-bs-toggle="button" aria-pressed="true">100ml</button>-->
+<!--      <button type="button" class="btn active" data-bs-toggle="button" aria-pressed="true">200ml</button><br><br>-->
+    <a class="btn btn-primary">{{perfume[6]}}₴</a><br><br>
+    <div class="row">
+      <div class="col text-start">
+    <a onclick="window.location.href='{{ url_for('add_to_basket', id=perfume[0]) }}'" class="btn btn-primary ">Basket</a>
+        </div>
+      <div class="col text-end">
+    <a onclick="window.location.href='{{ url_for('details_2', id=perfume[0],ml='50') }}'" class="btn btn-primary text-end">Details</a>
+      </div>
+    </div>
+      </div>
+    </div>
+  </div>
+  {%endfor%}
+  </div>
+
+{%endblock%}

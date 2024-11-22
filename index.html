@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}Essences{% endblock %}
+
+{% block content %}
+<h1 class="catd_title text-center">Essences</h1>
+
+<h4>Найновіші аромати, які просто ідеальні восени. Кожен з яких додасть чарівності до вашого образу і зробить веселішим навіть найпохмуріший вечір.</h4>
+
+<div class="p-3 mb-2 text-dark" style="background-color: rgb(205, 106, 31);" >
+    <div class="row">
+    <div class="col-3">
+      <img src="{{ url_for('static', filename='autumn_forest.jpeg')}}" class=" card-img-top " style="width: 300px; height: 300px;">
+        </div>
+    <div class="col">
+        <h5 class="card-title">Осінній ліс</h5>
+        <p class="card-text">Затишний осінній аромат, як сухе листя, мох, крапля диму, кедр і пряні ноти кориці.</p>
+        <a onclick="window.location.href='{{ url_for('details_2', id=21, ml='50') }}'" class="btn btn-black text-end">Details</a>
+    </div>
+       </div>
+
+</div>
+<div class="p-3 mb-2 text-dark" style="background-color: rgb(129, 72, 29);">
+    <div class="row">
+    <div class="col">
+      <h5 class="card-title">Карамельний латте</h5>
+        <p class="card-text">Теплий і солодкий аромат для затишку з солодкими нотками карамелі, кавових зерен, мигдалевого молока і ванілі.</p>
+        <a onclick="window.location.href='{{ url_for('details_2', id=9, ml='50') }}'" class="btn btn-black text-end">Details</a>
+        </div>
+    <div class="col-3">
+        <img src="{{ url_for('static', filename='caramel_latte.jpeg')}}" class="card-img-top" style="width: 300px; height: 300px;">
+
+    </div>
+       </div>
+</div>
+<div class="p-3 mb-2 text-dark" style="background-color: rgb(250, 120, 19);">
+   <div class="row">
+    <div class="col-3">
+      <img src="{{ url_for('static', filename='spicy_pumpkin.jpeg')}}" class="card-img-top" style="width: 300px; height: 300px;">
+        </div>
+    <div class="col">
+        <h5 class="card-title">Пряний гарбуз</h5>
+        <p class="card-text">Сезонний аромат для осіннього настрою з теплими нотками гарбузової пряності з корицею, мускатним горіхом, ваніллю та кремовим мускусом.</p>
+        <a onclick="window.location.href='{{ url_for('details_2', id=13, ml='50') }}'" class="btn btn-black text-end">Details</a>
+    </div>
+       </div>
+</div>
+<div class="p-3 mb-2 text-dark" style="background-color: rgb(164, 108, 65);">
+   <div class="row">
+    <div class="col">
+       <h5 class="card-title">Теплий мед</h5>
+        <p class="card-text">Солодкий аромат для особливих моментів з цукровим ароматом меду з додаванням жасмину, амбри та краплі бурштину.</p>
+        <a onclick="window.location.href='{{ url_for('details_2', id=16, ml='50') }}'" class="btn btn-black text-end">Details</a>
+        </div>
+    <div class="col-3">
+        <img src="{{ url_for('static', filename='warm_honey.jpeg')}}" class="card-img-top" style="width: 300px; height: 300px;">
+
+    </div>
+       </div>
+</div>
+{% endblock %}

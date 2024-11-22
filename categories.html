@@ -1,0 +1,36 @@
+{%extends 'base.html'%}
+
+{%block title%}Categoria{%endblock%}
+
+{%block content%}
+
+<img src="{{ url_for('static', filename=picture) }}" class="card-img-top" style="width: 1500px; height: 500px;"><br><br>
+
+<div class="row row-cols-5 row-cols-md-5 g-5">
+   {% for perfume in products %}
+  <div class="col">
+    <div class="card">
+      <img src="{{ url_for('static', filename=perfume[2]) }}" class="card-img-top" >
+      <div class="card-body">
+        <h5 class="card-title">{{perfume[3]}}</h5>
+           <p class="fs-6 bs-secondary-color-rgb">{{perfume[1]}}</p>
+        <p class="card-text">{{perfume[4]}}</p>
+<!--        <p>Об'єм:</p>-->
+<!--      <button type="button" class="btn active" data-bs-toggle="button" aria-pressed="true">50ml</button>-->
+<!--      <button type="button" class="btn active" data-bs-toggle="button" aria-pressed="true">100ml</button>-->
+<!--      <button type="button" class="btn active" data-bs-toggle="button" aria-pressed="true">200ml</button><br><br>-->
+    <a class="btn btn-primary">{{perfume[6]}}₴</a><br><br>
+    <div class="row">
+      <div class="col text-start">
+    <a onclick="window.location.href='{{ url_for('add_to_basket', id=perfume[0]) }}'" class="btn btn-primary ">Basket</a>
+        </div>
+      <div class="col text-end">
+    <a onclick="window.location.href='{{ url_for('details_2', id=perfume[0],ml='50') }}'" class="btn btn-primary text-end">Details</a>
+      </div>
+    </div>
+      </div>
+    </div>
+  </div>
+  {%endfor%}
+  </div>
+{%endblock%}

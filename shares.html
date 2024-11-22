@@ -1,0 +1,30 @@
+{%extends 'base.html'%}
+
+{%block title%}Shares{%endblock%}
+
+{%block content%}
+<h1 class=" catd_title text-center ">Shares</h1>
+
+   <div class="row row-cols-2 row-cols-md-4 g-3">
+      <div class="col">
+        <div class="card">
+          <img class="bd-placeholder-img card-img-top"  src="{{ url_for('static', filename=random_products[2]) }}" alt="Image cap" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <div class="card-body">
+            <h5 class="card-title">{{random_products[3]}}</h5>
+            <p class="fs-6 bs-secondary-color-rgb">{{random_products[1]}}</p>
+            <p class="card-text">{{random_products[4]}}</p>
+           <div class="row">
+            <div class="col text-start">
+                <p class="badge text-danger text-wrap fw-bold fs-5 text-decoration-line-through">{{random_products[6]}}</p><br>
+                <p class="badge text-bg-danger text-wrap fw-bold fs-5">{{price}}</p>
+                </div>
+      <div class="col text-end">
+    <a onclick="window.location.href='{{ url_for('add_to_basket', id=random_products[0]) }}'" class="btn btn-primary ">Basket</a><br><br>
+          <a onclick="window.location.href='{{ url_for('details_2', id=random_products[0], ml='50') }}'" class="btn btn-primary text-end">Details</a>
+                 </div>
+            </div>
+           </div>
+          </div>
+        </div>
+   </div>
+{%endblock%}
